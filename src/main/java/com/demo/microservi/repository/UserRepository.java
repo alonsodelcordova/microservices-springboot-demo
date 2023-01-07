@@ -1,6 +1,5 @@
 package com.demo.microservi.repository;
-
-import com.demo.microservi.models.ProductEntity;
+import com.demo.microservi.models.UserEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,9 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends MongoRepository<ProductEntity, String>
+public interface UserRepository extends MongoRepository<UserEntity, String>
 {
-    @Query("{'productName' : ?0}")
-    List<ProductEntity> findByName(String productName);
-
+    @Query("{'email' : ?0}")
+    List<UserEntity> findByEmail(String email);
 }
