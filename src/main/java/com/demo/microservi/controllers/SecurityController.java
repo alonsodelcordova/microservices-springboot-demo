@@ -1,7 +1,10 @@
 package com.demo.microservi.controllers;
 
 import com.demo.microservi.dto.input.UserLoginInput;
+import com.demo.microservi.dto.output.UserLoginOutput;
+import com.demo.microservi.services.ISecurityService;
 import io.swagger.annotations.Api;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +14,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/security")
 public class SecurityController {
 
+    @Autowired
+    private ISecurityService securityService;
     @PostMapping
-    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> login(@RequestBody UserLoginInput userInput){
-
-        return new ResponseEntity<>(null);
+        UserLoginOutput userLogout = securityService.login(userInput);
+        return new ResponseEntity<>(userLogout, HttpStatus.OK);
     }
 }

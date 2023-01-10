@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface IUserService {
     List<UserEntity> getAll();
+    Optional<UserEntity> getFindUserName(String email);
     UserEntity findById (String id);
     UserEntity save(UserEntity user);
     UserEntity update(String Id, UserEntity user);

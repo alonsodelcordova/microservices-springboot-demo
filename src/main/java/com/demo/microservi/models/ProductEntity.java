@@ -10,9 +10,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(value = "product")
 @Data
 @NoArgsConstructor
-public class ProductEntity extends  ProductInput{
+public class ProductEntity{
     @Id
     private String id;
+    private String productName;
+    private String productDescription;
+    private double priceUnit;
     public ProductEntity(ProductInput input){
         this.setProductName( input.getProductName());
         this.setProductDescription(input.getProductDescription());
